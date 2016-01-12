@@ -117,10 +117,10 @@ class PipelineSettings(collections.MutableMapping):
         return self.__getitem__(name)
 
 
-settings = PipelineSettings(_settings.PIPELINE)
+settings = PipelineSettings(_settings.ASSET_PIPELINE)
 
 
 @receiver(setting_changed)
 def reload_settings(**kwargs):
-    if kwargs['setting'] == 'PIPELINE':
+    if kwargs['setting'] == 'ASSET_PIPELINE':
         settings.update(kwargs['value'])
